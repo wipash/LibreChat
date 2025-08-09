@@ -16,6 +16,7 @@ const customProviders = new Set([
   Providers.OLLAMA,
   Providers.DEEPSEEK,
   Providers.OPENROUTER,
+  Providers.LITELLM,
 ]);
 
 export function getReasoningKey(
@@ -33,7 +34,7 @@ export function getReasoningKey(
     reasoningKey = 'reasoning';
   } else if (
     (llmConfig as OpenAIClientOptions).useResponsesApi === true &&
-    (provider === Providers.OPENAI || provider === Providers.AZURE)
+    (provider === Providers.OPENAI || provider === Providers.AZURE || provider === Providers.LITELLM)
   ) {
     reasoningKey = 'reasoning';
   }

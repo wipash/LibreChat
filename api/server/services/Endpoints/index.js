@@ -12,7 +12,13 @@ const { getCustomEndpointConfig } = require('~/server/services/Config');
  * @returns {boolean} - True if the provider is a known custom provider, false otherwise
  */
 function isKnownCustomProvider(provider) {
-  return [Providers.XAI, Providers.OLLAMA, Providers.DEEPSEEK, Providers.OPENROUTER].includes(
+  return [
+    Providers.XAI,
+    Providers.OLLAMA,
+    Providers.DEEPSEEK,
+    Providers.OPENROUTER,
+    Providers.LITELLM,
+  ].includes(
     provider?.toLowerCase() || '',
   );
 }
@@ -22,6 +28,7 @@ const providerConfigMap = {
   [Providers.OLLAMA]: initCustom,
   [Providers.DEEPSEEK]: initCustom,
   [Providers.OPENROUTER]: initCustom,
+  [Providers.LITELLM]: initCustom,
   [EModelEndpoint.openAI]: initOpenAI,
   [EModelEndpoint.google]: initGoogle,
   [EModelEndpoint.azureOpenAI]: initOpenAI,
